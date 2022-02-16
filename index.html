@@ -1,61 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./images/favicon-32x32.png"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inter:wght@400;700&family=Lexend+Deca&family=Spartan:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-    <title>Frontend Mentor | Social proof section</title>
+  <title>Frontend Mentor | Social proof section</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    * {
+      /* font-size: 15px; */
+      font-family: 'Spartan';
+    }
+
+    .mobile-top,
+    .mobile-bottom {
+      display: none;
+    }
+
+    .main {
+      max-width: 1440px;
+    }
+
+    .desktop-top {
+      max-width: 45%;
+      max-height: 50%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .desktop-bottom {
+      max-width: 70%;
+      max-height: 80%;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
+
+    .main-card {
+      position: relative;
+      margin: auto;
+      max-width: 80%;
+
+      margin-top: 100px;
+      margin-bottom: 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "tex   ratting "
+        "cards cards  "
+    }
+
+    .card-text {
+      grid-area: tex;
+
+    }
+
+    .card-text>h1 {
+      color: hsl(300, 43%, 22%);
+      margin-bottom: none;
+      margin-block-end: 0;
+      padding-right: 150px;
+      font-weight: 700;
+      font-size: 40px;
+    }
+
+    .card-text>p {
+      color: hsl(303, 10%, 53%);
+      margin: none;
+      font-size: 11px;
+      font-weight: 400;
+      padding-right: 150px;
+
+    }
+
+    .card-ratings {
+      grid-area: ratting;
+
+    }
+
+    .card-ratting1 {
+      background-color: hsl(300, 24%, 96%);
+      color: hsl(300, 43%, 22%);
+      font-size: 11px;
+      margin-top: 30px;
+      margin-left: 40px;
+      border-radius: 5px;
+      display: flex;
+      max-width: 70%;
+
+    }
+
+    .card-ratting2 {
+      background-color: hsl(300, 24%, 96%);
+      color: hsl(300, 43%, 22%);
+      font-size: 11px;
+      margin-left: 80px;
+      margin-top: 20px;
+      border-radius: 5px;
+      display: flex;
+      max-width: 70%;
+    }
+
+    .card-ratting3 {
+      background-color: hsl(300, 24%, 96%);
+      color: hsl(300, 43%, 22%);
+      font-size: 11px;
+      margin-left: 120px;
+      margin-top: 20px;
+      border-radius: 5px;
+      display: flex;
+      max-width: 70%;
+    }
+
+    .card-ratting1,
+    .card-ratting2,
+    .card-ratting3 {
+      padding: 10px 0px 10px 30px;
+
+    }
+
+    .card-ratting1>p,
+    .card-ratting2>p,
+    .card-ratting3>p {
+      margin-left: 20px;
+      font-weight: 700;
+      /* align-items: center; */
+
+    }
+
+    .card-ratting1>svg,
+    .card-ratting2>svg,
+    .card-ratting3>svg {
+      margin: 10px 0px 10px 0px;
+      /* align-items: center; */
+    }
+
+
+    .cards {
+      grid-area: cards;
+      border: 1 px solid purple;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+        "card1 card2 card3";
+    }
+
+    /* start */
+
+    .card-card1 {
+      grid-area: card1;
+      background-color: hsl(300, 43%, 22%);
+      padding: 30px;
+      margin: 30px 20px 30px 0px;
+      border-radius: 10px;
+    }
+
+    .card1-img-h3,
+    .card2-img-h3,
+    .card3-img-h3 {
+      display: flex;
+      align-items: center;
+    }
+
+    .card1-img,
+    .card2-img,
+    .card3-img {
+      border-radius: 50%;
+      height: 40px;
+
+    }
+
+    .card1-spec,
+    .card2-spec,
+    .card3-spec {
+
+      color: hsl(333, 80%, 67%);
+
+
+    }
+
+    h3 {
+      margin-block-end: 0;
+      margin-block-start: 0;
+      font-size: 11px;
+
+    }
+
+    .cards p,
+    .card1-name,
+    .card2-name,
+    .card3-name {
+      color: hsl(0, 0%, 100%);
+      font-size: 11px;
+      line-height: 20px;
+    }
+
+    .card1-h3only,
+    .card2-h3only,
+    .card3-h3only {
+      margin-left: 20px;
+    }
+
+
+    .card-card2 {
+
+      grid-area: card2;
+      background-color: hsl(300, 43%, 22%);
+      padding: 30px;
+      margin: 40px 20px 20px 10px;
+      border-radius: 10px;
+    }
+
+    .card-card3 {
+      grid-area: card3;
+      background-color: hsl(300, 43%, 22%);
+      padding: 30px;
+      margin: 50px 0px 10px 10px;
+      border-radius: 10px;
+    }
+
+    @media (max-width:1000px) {
+      .main {
+        max-width: 375px;
+        
+
+        position: relative;
+        margin: auto;
+        max-height: 3000px;
+        
+
+      }
+
+      .mobile-top,
+      .mobile-bottom {
+        display: inline;
+        z-index: -2;
+
+      }
+      .mobile-bottom{
+        margin-top: -1000px;
+      }
+
+      .desktop-top,
+      .desktop-bottom {
+        display: none;
+      }
+
+
+
+      .main-card {
+        
+        
+        
+        margin-top: -200px;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        
+      }
+
+      .card-text h1,
+      .card-text p {
+
+        text-align: center;
+        padding: 0px;
+        font-size: 15px;
+      }
+
+      .card-text h1 {
+        font-size: 35px;
+      }
+
+      .card-ratting1,
+      .card-ratting3,
+      .card-ratting2 {
+        margin: 10px 0px 0px 0px;
+        padding: 0px;
+        max-width: 100%;
+        display: block;
         text-align: center;
       }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
+
+      p {
+        padding: 0px 0px 10px 0px;
+        margin-top: 0px;
       }
-    </style>
-  </head>
-  <body>
-    10,000+ of our users love our products.
 
-    We only provide great products combined with excellent customer service.
-    See what our satisfied customers are saying about our services.
-    
-    Rated 5 Stars in Reviews
-    Rated 5 Stars in Report Guru
-    Rated 5 Stars in BestTech
-    
-    Colton Smith 
-    Verified Buyer
-    "We needed the same printed design as the one we had ordered a week prior.
-    Not only did they find the original order, but we also received it in time.
-    Excellent!"
-    
-    Irene Roberts 
-    Verified Buyer
-    "Customer service is always excellent and very quick turn around. Completely
-    delighted with the simplicity of the purchase and the speed of delivery."
-    
-    Anne Wallace 
-    Verified Buyer
-    "Put an order with this company and can only praise them for the very high
-    standard. Will definitely use them again and recommend them to everyone!"
+      .cards {
+        display: flex;
+        flex-direction: column;
+      }
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      .card-card1,
+      .card-card2,
+      .card-card3 {
+        margin: 10px 0px 0px 0px;
+
+      }
+
+
+    
+
+
+
+
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+
+    <img class="desktop-top" src="images/bg-pattern-top-desktop.svg">
+    <img class="mobile-top" src="images/bg-pattern-top-mobile.svg">
+    <div class="main-card">
+      <div class="card-text">
+
+        <h1>10,000+ of our users love our products.</h1>
+
+        <p>We only provide great products combined with excellent customer service.
+          See what our satisfied customers are saying about our services.</p>
+      </div>
+
+      <div class="card-ratings">
+        <div class="card-ratting1">
+
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+
+          <p>Rated 5 Stars in Reviews</p>
+
+        </div>
+        <div class="card-ratting2">
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+
+          <p>Rated 5 Stars in Reviews</p>
+        </div>
+        <div class="card-ratting3">
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+          <svg width="17" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.539 6.097a.297.297 0 00-.24-.202l-5.36-.779L8.542.26a.296.296 0 00-.53 0L5.613 5.117l-5.36.779a.297.297 0 00-.165.505l3.88 3.78-.917 5.34a.297.297 0 00.43.312l4.795-2.52 4.794 2.52a.296.296 0 00.43-.313l-.916-5.338L16.464 6.4c.08-.08.11-.197.075-.304z"
+              fill="#EF9546" fill-rule="nonzero" />
+          </svg>
+
+          <p>Rated 5 Stars in Reviews</p>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card-card1">
+          <div class="card1-img-h3">
+            <img class="card1-img" src="images/image-colton.jpg">
+            <div class="card1-h3only">
+              <h3 class="card1-name">Colton Smith</h3>
+              <h3 class="card1-spec">Verified Buyer</h3>
+            </div>
+          </div>
+          <p>"We needed the same printed design as the one we had ordered a week prior.
+            Not only did they find the original order, but we also received it in time.
+            Excellent!"
+          </p>
+        </div>
+
+        <div class="card-card2">
+          <div class="card2-img-h3">
+            <img class="card2-img" src="images/image-irene.jpg">
+            <div class="card2-h3only">
+              <h3 class="card2-name">Irene Roberts</h3>
+              <h3 class="card2-spec">Verified Buyer</h3>
+            </div>
+          </div>
+          <p>"Customer service is always excellent and very quick turn around. Completely
+            delighted with the simplicity of the purchase and the speed of delivery."
+          </p>
+        </div>
+
+        <div class="card-card3">
+          <div class="card3-img-h3">
+            <img class="card3-img" src="images/image-anne.jpg">
+            <div class="card2-h3only">
+
+              <h3 class="card3-name">Anne Wallace</h3>
+              <h3 class="card3-spec">Verified Buyer</h3>
+            </div>
+          </div>
+          <p>"Put an order with this company and can only praise them for the very high
+            standard. Will definitely use them again and recommend them to everyone!"
+          </p>
+
+        </div>
+      </div>
     </div>
-  </body>
+
+    <img class="desktop-bottom" src="images/bg-pattern-bottom-desktop.svg">
+    <img class="mobile-bottom" src="images/bg-pattern-bottom-mobile.svg">
+  </div>
+
+  <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a
+      href="#">samsoor</a>.
+  </div>
+</body>
+
 </html>
